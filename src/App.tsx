@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Others from "./pages/Others";
-import { OtherForNow } from "./pages/OtherForNow";
 import { sidebarMenuOptions } from "./lib/sidebar-items";
 import Payments from "./pages/Payments";
 
@@ -24,7 +23,7 @@ function App() {
               <Route
                 key={option.id}
                 path={option.navigateTo}
-                element={<OtherForNow />}
+                element={<Others pageTitle={option.label} />}
               />
             )
           )}
