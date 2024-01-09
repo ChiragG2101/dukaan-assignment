@@ -16,7 +16,15 @@ interface Provider {
   img_url: string;
   isSetUp: boolean;
 }
-export function SetupProvider({ provider }: { provider: Provider }) {
+export function SetupProvider({
+  provider,
+  openSetup,
+  openSetupProvider,
+}: {
+  provider: Provider;
+  openSetup: boolean;
+  openSetupProvider: (providerName: boolean) => void;
+}) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -53,7 +61,17 @@ export function SetupProvider({ provider }: { provider: Provider }) {
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" className="bg-sky-600">
+          <Button
+            type="submit"
+            className="bg-sky-600"
+            value={openSetup ? 1 : 0}
+            onClick={(e) => {
+              let i: boolean;
+              if (parseInt((e.target as HTMLButtonElement).value)) i = true;
+              else i = false;
+              openSetupProvider(i);
+            }}
+          >
             Continue
           </Button>
         </DialogFooter>

@@ -104,7 +104,11 @@ export function ProviderPage({
                       </DropdownMenu>
                     </>
                   ) : openSetup ? (
-                    <SetupProvider provider={provider} />
+                    <SetupProvider
+                      provider={provider}
+                      openSetup={openSetup}
+                      openSetupProvider={openSetupProvider}
+                    />
                   ) : (
                     <ProviderAlert
                       provider={provider}
