@@ -12,7 +12,6 @@ import {
 import { transactionsData } from "@/lib/table-data";
 import { useState, useRef } from "react";
 import { ProviderPage } from "@/components/payment-provider/ProviderPage";
-import { render } from "react-dom";
 
 const Payments = () => {
   const [paymentProviderSetup, setPaymentProviderSetup] = useState(true);
