@@ -57,7 +57,7 @@ export function ProviderPage({
   paymentProviderSetup: boolean;
   handlePaymentProviderSetup: (paymentProviderSetup: boolean) => void;
 }) {
-  const [openSetup, setOpenSetup] = useState(false);
+  const [openSetup, setOpenSetup] = useState(true);
   function openSetupProvider(openSetup: boolean) {
     setOpenSetup(!openSetup);
   }
