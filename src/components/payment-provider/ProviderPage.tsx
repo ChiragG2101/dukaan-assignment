@@ -1,12 +1,9 @@
-import { BellIcon, CheckIcon } from "@radix-ui/react-icons";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -15,21 +12,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { ProviderAlert } from "./ProviderAlert";
 import { SetupProvider } from "./SetupProvider";
 import Header from "../Header";
@@ -159,8 +143,13 @@ export function ProviderPage({
         <Button
           variant="default"
           className="w-56 bg-red-600"
-          value={paymentProviderSetup}
-          onClick={(e) => handlePaymentProviderSetup(e.target.value)}
+          value={paymentProviderSetup ? 0 : 1}
+          onClick={(e) => {
+            let i: boolean;
+            if (parseInt((e.target as HTMLButtonElement).value)) i = true;
+            else i = false;
+            handlePaymentProviderSetup(i);
+          }}
         >
           Click Here After walkthrough
         </Button>

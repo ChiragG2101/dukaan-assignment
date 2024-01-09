@@ -52,8 +52,13 @@ export const ProviderAlert = ({
           </AlertDialogCancel>
           <AlertDialogAction
             className="bg-sky-600"
-            value={openSetup}
-            onClick={(e) => openSetupProvider(e.target.value)}
+            value={openSetup ? 1 : 0}
+            onClick={(e) => {
+              let i: boolean;
+              if (parseInt((e.target as HTMLButtonElement).value)) i = true;
+              else i = false;
+              openSetupProvider(i);
+            }}
           >
             Continue with set up
           </AlertDialogAction>
