@@ -22,7 +22,13 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { ArrowDownUp, ChevronLeft, ChevronRight, Download, Search } from "lucide-react";
+import {
+  ArrowDownUp,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  Search,
+} from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -34,7 +40,7 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [sorting, setSorting] = useState<SortingState>([])
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data,
@@ -47,12 +53,12 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     initialState: {
       pagination: {
-        pageSize: 5,
+        pageSize: 10,
       },
     },
     state: {
       columnFilters,
-      sorting
+      sorting,
     },
   });
 
@@ -61,7 +67,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex relative items-center justify-between py-4">
+      <div className="relative flex items-center justify-between py-4">
         <Input
           placeholder="Search by order ID..."
           value={(table.getColumn("orderId")?.getFilterValue() as string) ?? ""}
@@ -71,28 +77,33 @@ export function DataTable<TData, TValue>({
           className="max-w-sm pl-9 text-[#999999]"
         />
         <Search className="absolute ml-2 text-[#999999]" size={20} />
-        <div className="hidden sm:flex gap-3">
-            <Popover>
-                <PopoverTrigger>
-                    <Button variant="outline" className="text-[#4D4D4D]">
-                        Sort
-                        <ArrowDownUp size={15} className="ml-2 text-[#4D4D4D]" />
-                    </Button>
-                </PopoverTrigger>
-                <PopoverContent>To sort the values, simply click on the column header.</PopoverContent>
-            </Popover>
-            <Button variant="outline">
-                <Download size={18} className="text-[#4D4D4D]" />
-            </Button>
+        <div className="hidden gap-3 sm:flex">
+          <Popover>
+            <PopoverTrigger>
+              <Button variant="outline" className="text-[#4D4D4D]">
+                Sort
+                <ArrowDownUp size={15} className="ml-2 text-[#4D4D4D]" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              To sort the values, simply click on the column header.
+            </PopoverContent>
+          </Popover>
+          <Button variant="outline">
+            <Download size={18} className="text-[#4D4D4D]" />
+          </Button>
         </div>
       </div>
-      <div className="rounded-md border">
+      <div className="border rounded-md">
         <Table>
           <TableHeader className="bg-[#F2F2F2]">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} className="font-bold text-[#4D4D4D]">
+                  <TableHead
+                    key={header.id}
+                    className="font-bold text-[#4D4D4D]"
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -134,14 +145,14 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-center space-x-2 py-4">
+      <div className="flex items-center justify-center py-4 space-x-2">
         <Button
           variant="outline"
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          <ChevronLeft size={18} className="sm:mr-2" />  
+          <ChevronLeft size={18} className="sm:mr-2" />
           Previous
         </Button>
         {Array.from({ length: pageCount }, (_, index) => (
