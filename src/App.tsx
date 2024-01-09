@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-import Others from "../src/components/pages/Others";
+import Others from "./pages/Others";
 import { sidebarMenuOptions } from "./lib/sidebar-items";
-import Payments from "../src/components/pages/Payments";
+import Payments from "./pages/Payments";
 
 function App() {
   return (
