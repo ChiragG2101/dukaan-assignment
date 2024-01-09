@@ -18,26 +18,32 @@ import { ProviderAlert } from "./ProviderAlert";
 import { SetupProvider } from "./SetupProvider";
 import Header from "../Header";
 import { useState } from "react";
+import razorpayLogo from "@/assets/paymentLogos/razorpayLogo.png";
+import upiLogo from "@/assets/paymentLogos/upiLogo.png";
+import paytmLogo from "@/assets/paymentLogos/paytmLogo.png";
+import phonepeLogo from "@/assets/paymentLogos/phonepeLogo.png";
+import CODLogo from "@/assets/paymentLogos/COD logo.png";
+import Vector from "@/assets/icons/Vector.svg";
 
 const providerList = [
   {
     name: "Cash Free Payments",
-    img_url: "../../src/assets/paymentLogos/upiLogo.png",
+    img_url: upiLogo,
     isSetUp: true,
   },
   {
     name: "Razor Pay",
-    img_url: "../../src/assets/paymentLogos/razorpayLogo.png",
+    img_url: razorpayLogo,
     isSetUp: false,
   },
   {
     name: "Phone Pe",
-    img_url: "../../src/assets/paymentLogos/phonepeLogo.png",
+    img_url: phonepeLogo,
     isSetUp: false,
   },
   {
     name: "Paytm",
-    img_url: "../../src/assets/paymentLogos/paytmLogo.png",
+    img_url: paytmLogo,
     isSetUp: false,
   },
 ];
@@ -87,10 +93,7 @@ export function ProviderPage({
                       <Button variant="outline">Detail</Button>
                       <DropdownMenu>
                         <DropdownMenuTrigger>
-                          <img
-                            src="../../src/assets/icons/Vector.svg"
-                            alt="options"
-                          ></img>
+                          <img src={Vector} alt="options"></img>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                           <DropdownMenuItem>Deactivate</DropdownMenuItem>
@@ -114,7 +117,7 @@ export function ProviderPage({
             </div>
             <div className="flex items-center p-4 space-x-4 rounded-md ">
               <span>
-                <img src="../../src/assets/paymentLogos/COD logo.png"></img>
+                <img src={CODLogo}></img>
               </span>
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-bold text-[#1A181E] leading-none">
