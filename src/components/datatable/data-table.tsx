@@ -85,9 +85,7 @@ export function DataTable<TData, TValue>({
                 <ArrowDownUp size={15} className="ml-2 text-[#4D4D4D]" />
               </Button>
             </PopoverTrigger>
-            <PopoverContent>
-              To sort the values, simply click on the column header.
-            </PopoverContent>
+            <PopoverContent>Click on Table headers for sorting</PopoverContent>
           </Popover>
           <Button variant="outline">
             <Download size={18} className="text-[#4D4D4D]" />
